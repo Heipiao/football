@@ -1,0 +1,19 @@
+{
+  "name": "football",
+  "version": "1.0.0",
+  "description": "the project of web ",
+  "main": "twitter_f.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Heipiao/football.git"
+  },
+  "author": "siliang liu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Heipiao/football/issues"
+  },
+  "homepage": "https://github.com/Heipiao/football#readme"
+}
