@@ -1,5 +1,5 @@
 var Twit = require('twit');
-
+var insertTwitter = require('./mysql_f');
 var T = new Twit({
   consumer_key:         'FSu9mlFZrbfnggLqZIwu5MXLy',
   consumer_secret:      'xXBEPeCbnw5L7TgB65CuWD5aliYFlS2b95xzjMLFnIFCPGveuO',
@@ -8,13 +8,13 @@ var T = new Twit({
   timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
 });
 
-var query = 'I from:ManUtd'
+var query = 'he from:ManUtd'
 var twitterList = []
 var twitterNode = {}
 
-T.get('search/tweets', { q: query, count: 20 }, function(err, data, response) { 
+T.get('search/tweets', {q: query}, function(err, data, response) { 
   if(err){
-    console.log(err)
+    console.log(err);
   }
   for( var i =0 ;i< data.statuses.length;i++)
   {
@@ -23,8 +23,13 @@ T.get('search/tweets', { q: query, count: 20 }, function(err, data, response) {
       time: data.statuses[i].created_at,
       text: data.statuses[i].text
     }
-    twitterList.push(twitterNode)
-  }
-})
+    insertTwitter(twitterNode);
+    twitterList.push(twitterNode);
+    //process.exit(0);
+  } 
+});
 
-console.log(twitterList)
+console.log(twitterList);
+
+
+
